@@ -7,5 +7,7 @@ brew install stow
 #### Run stow
 ```
 cd ~/.dotfiles
+```
+```
 stow .
 ```
