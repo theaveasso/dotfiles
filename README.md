@@ -1,6 +1,6 @@
 # ~/.dotfiles 
 Link files with `GNU stow`
-### For Mac users
+### For Mac
 ```
 brew install stow 
 ```
