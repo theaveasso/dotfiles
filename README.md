@@ -11,4 +11,27 @@ cd ~/.dotfiles
 ```
 stow .
 ```
+### VSCode
+#### Extensions
+- advanced-new-file
+- Auto Rename Tag
+- Better Comments
+- Better TOML
+- Code Spell Checker
+- Color Highlight
+- Error Lens
+- ES7 + React/Redux/React-Native snippents
+- ESLint
+- File Utils
+- GitLens
+- Import Cost
+- indent-rainbow
+- Live Server
+- Prettier
+- Tailwind CSS
+- Vim
+
+#### Color Extension
+- Tokyo Night
+
 
