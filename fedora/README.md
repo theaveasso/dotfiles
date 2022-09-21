@@ -1,7 +1,7 @@
 # Things to do after installing Fedora
 ## Software Development
 ### Software
-- VSCode
+- [VSCode](https://www.linuxcapable.com/how-to-install-visual-studio-code-on-fedora-36-linux/)
 - Docker
 
 ### Language
