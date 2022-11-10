@@ -21,6 +21,7 @@ stow .
 - Color Highlight
 - Error Lens
 - ES7 + React/Redux/React-Native snippents
+- Path Intellisense
 - ESLint
 - File Utils
 - GitLens
