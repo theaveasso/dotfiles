@@ -1,35 +1,66 @@
 {
-	"prettier.singleQuote": true,
-	"prettier.tabWidth": 4,
-	"prettier.jsxSingleQuote": true,
-	"prettier.useTabs": true,
-	"prettier.endOfLine": "auto",
-	"editor.experimental.stickyScroll.enabled": true,
-	"editor.renderWhitespace": "all",
-	"editor.formatOnSave": true,
-	"editor.fontSize": 16,
-	"editor.tabSize": 2,
-	"editor.wordWrap": "on",
-	"editor.defaultFormatter": "esbenp.prettier-vscode",
-	"editor.foldingImportsByDefault": true,
-	"editor.codeActionsOnSave": {
-		"source.fixAll": true,
-		"source.sortImports": true
-	},
-	"workbench.colorTheme": "Tokyo Night",
+	"better-comments.multilineComments": true,
+	"better-comments.tags": [
+		{
+			"tag": "!",
+			"color": "#FF2D00",
+			"strikethrough": false,
+			"underline": false,
+			"backgroundColor": "transparent",
+			"bold": false,
+			"italic": false
+		},
+		{
+			"tag": "?",
+			"color": "#3498DB",
+			"strikethrough": false,
+			"underline": false,
+			"backgroundColor": "transparent",
+			"bold": false,
+			"italic": false
+		},
+		{
+			"tag": "//",
+			"color": "#474747",
+			"strikethrough": true,
+			"underline": false,
+			"backgroundColor": "transparent",
+			"bold": false,
+			"italic": false
+		},
+		{
+			"tag": "todo",
+			"color": "#FF8C00",
+			"strikethrough": false,
+			"underline": false,
+			"backgroundColor": "transparent",
+			"bold": false,
+			"italic": false
+		},
+		{
+			"tag": "*",
+			"color": "#98C379",
+			"strikethrough": false,
+			"underline": false,
+			"backgroundColor": "transparent",
+			"bold": false,
+			"italic": false
+		}
+	],
+	"workbench.colorTheme": "One Dark Pro Darker",
 	"workbench.startupEditor": "none",
 	"liveServer.settings.donotShowInfoMsg": true,
 	"terminal.integrated.fontFamily": "MesloLGS NF",
 	"files.autoSave": "onFocusChange",
 	"explorer.confirmDelete": false,
 	"explorer.confirmDragAndDrop": false,
+	"explorer.sortOrder": "type",
 	"sync.gist": "0347f564969e6ea0530a7658bdcf7395",
 	"gitlens.hovers.currentLine.over": "line",
 	"diffEditor.ignoreTrimWhitespace": false,
 	"javascript.updateImportsOnFileMove.enabled": "always",
 	"typescript.updateImportsOnFileMove.enabled": "always",
 	"reactSnippets.settings.prettierEnabled": true,
-
 	"vim.easymotion": true,
 	"vim.incsearch": true,
 	"vim.useSystemClipboard": true,
@@ -102,17 +133,63 @@
 		}
 	],
 	"vim.leader": "<space>",
-
 	"vim.handleKeys": {
 		"<C-a>": false,
 		"<C-f>": false,
-		// VS Code new marker @ next occurrence
 		"<C-c>": true,
-		// Cut
 		"<C-x>": false,
-		// Paste
 		"<C-v>": false,
 		"<C-z>": false,
 		"<C-y>": false
-	}
+	},
+	"cSpell.userWords": ["gericht"],
+	"workbench.iconTheme": "city-lights-icons-vsc-light",
+	"editor.stickyScroll.enabled": true,
+	"workbench.colorCustomizations": {
+		"editor.lineHighlightBackground": "#1073cf2d",
+		"editor.lineHighlightBorder": "#9fced11f"
+	},
+	"diffEditor.wordWrap": "off",
+	"editor.guides.indentation": false,
+	"editor.guides.bracketPairs": false,
+	"[prisma]": {
+		"editor.defaultFormatter": "Prisma.prisma"
+	},
+	"zenMode.hideLineNumbers": false,
+	"prettier.singleQuote": true,
+	"prettier.tabWidth": 2,
+	"prettier.jsxSingleQuote": true,
+	"prettier.useTabs": true,
+	"prettier.endOfLine": "auto",
+	"editor.renderWhitespace": "all",
+	"editor.formatOnSave": true,
+	"editor.tabSize": 2,
+	"editor.wordWrap": "off",
+	"editor.defaultFormatter": "esbenp.prettier-vscode",
+	"editor.foldingImportsByDefault": true,
+	"editor.codeActionsOnSave": {
+		"source.fixAll": true,
+		"source.sortImports": true
+	},
+	"editor.fontFamily": "'Cascadia Code PL'",
+	"editor.linkedEditing": true,
+	"eslint.alwaysShowStatus": true,
+	"eslint.debug": true,
+	"eslint.format.enable": true,
+	"eslint.lintTask.enable": true,
+	"eslint.packageManager": "yarn",
+	"eslint.probe": [
+		"javascript",
+		"javascriptreact",
+		"typescript",
+		"typescriptreact",
+		"html",
+		"vue",
+		"markdown",
+		"react"
+	],
+	"eslint.run": "onSave",
+	"rapidapi.terminalLink.enabled": false,
+	"window.zoomLevel": 2,
+	"city-lights-icons-vsc.hidesExplorerArrows": false
 }
