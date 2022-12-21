@@ -57,7 +57,6 @@
 	"explorer.sortOrder": "type",
 	"sync.gist": "0347f564969e6ea0530a7658bdcf7395",
 	"gitlens.hovers.currentLine.over": "line",
-	"diffEditor.ignoreTrimWhitespace": false,
 	"javascript.updateImportsOnFileMove.enabled": "always",
 	"typescript.updateImportsOnFileMove.enabled": "always",
 	"reactSnippets.settings.prettierEnabled": true,
@@ -80,6 +79,10 @@
 		{
 			"before": ["<S-tab>"],
 			"commands": ["workbench.action.previousEditor"]
+		},
+		{
+			"before": ["e"],
+			"after": ["b"]
 		}
 	],
 	"vim.insertModeKeyBindings": [

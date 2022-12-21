@@ -79,7 +79,6 @@ ZSH_THEME="powerlevel10k/powerlevel10k"
 # Add wisely, as too many plugins slow down shell startup.
 plugins=(git zsh-syntax-highlighting zsh-autosuggestions)
 
-source $ZSH/oh-my-zsh.sh
 
 # User configuration
 
@@ -88,6 +87,11 @@ if [ -x "$(command -v exa)" ]; then
     alias ls="exa"
     alias la="exa --long --all --group"
 fi
+
+alias ship24-fe='cd ~/dev/ship24/frontend/'
+alias ship24-be='cd ~/dev/ship24/backend/'
+alias start-api='cd ~/dev/ship24/backend/api/ && npm run start:dev'
+alias start-dbapi='cd ~/dev/ship24/backend/dashboard-api// && npm run start:dev'
 
 # export MANPATH="/usr/local/man:$MANPATH"
 
@@ -135,3 +139,16 @@ fi
 unset __conda_setup
 # <<< conda initialize <<<
 
+
+
+# Load Angular CLI autocompletion.
+source <(ng completion script)
+
+# pnpm
+export PNPM_HOME="/Users/theaveasso/Library/pnpm"
+export PATH="$PNPM_HOME:$PATH"
+
+# lunar vim
+export PATH="$HOME/.local/bin":$PATH
+
+source $ZSH/oh-my-zsh.sh
