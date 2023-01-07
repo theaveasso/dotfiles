@@ -91,8 +91,11 @@ fi
 alias ship24-fe='cd ~/dev/ship24/frontend/'
 alias ship24-be='cd ~/dev/ship24/backend/'
 alias start-api='cd ~/dev/ship24/backend/api/ && npm run start:dev'
-alias start-dbapi='cd ~/dev/ship24/backend/dashboard-api// && npm run start:dev'
+alias start-dbapi='cd ~/dev/ship24/backend/dashboard-api/ && npm run start:dev'
+alias start-boapi='cd ~/dev/ship24/backend/backoffice-api/ && npm run start:dev'
+alias start-crawler='cd ~/dev/ship24/backend/crawler/ && npm run start:dev'
 
+alias wb='webstorm .'
 # export MANPATH="/usr/local/man:$MANPATH"
 
 # You may need to manually set your language environment
