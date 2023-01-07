@@ -11,6 +11,9 @@ cd ~/.dotfiles
 ```
 stow .
 ```
+### ColorScehmas
+**Iterm2**
+- PaleNightHC.itermcolors
 ### VSCode
 #### Extensions
 - advanced-new-file
