@@ -1,2 +1,2 @@
-require('theaveasso')
-print('Hello from NeoVim')
+-- bootstrap lazy.nvim, LazyVim and your plugins
+require("config.lazy")
