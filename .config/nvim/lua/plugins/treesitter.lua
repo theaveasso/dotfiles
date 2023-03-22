@@ -8,6 +8,7 @@ return {
         "html",
         "javascript",
         "json",
+        "terraform",
         "lua",
         "markdown",
         "markdown_inline",
