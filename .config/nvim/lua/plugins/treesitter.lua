@@ -20,6 +20,8 @@ return {
         "typescript",
         "vim",
         "yaml",
+        "rust",
+        "java",
       },
     },
   },
