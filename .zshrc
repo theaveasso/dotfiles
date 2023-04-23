@@ -102,16 +102,14 @@ fi
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
 
 # >>> nvim initialize >>>
-alias nvim-lazy="NVIM_APPNAME="
-
 function nvims() {
-  items=("default" "theaveasso" "lazy" "astro")
+  items=("default" "astheo" "lazy" "astro")
   config=$(printf "%s\n" "${items[@]}" | fzf --prompt=" Neovim Config  " --height=~50% --layout=reverse --border --exit-0)
   if [[ -z $config ]]; then
     echo "Nothing selected"
     return 0
   elif [[ $config == "default" ]]; then
-    config=""
+    config="astheo"
   fi
   NVIM_APPNAME=$config nvim $@
 }
@@ -134,3 +132,8 @@ fi
 unset __conda_setup
 # <<< conda initialize <<<
 
+# >>> nvm initialize >>>
+export NVM_DIR="$HOME/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+# <<< nvm initialize <<<
