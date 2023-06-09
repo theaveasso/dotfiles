@@ -24,6 +24,7 @@ return {
     indent = { enable = true },
     autotag = { enable = true },
     context_commentstring = { enable = true, enable_autocmd = false },
+    ensure_installed = { "lua" },
   },
   config = require "plugins.configs.nvim-treesitter",
 }
