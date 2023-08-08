@@ -61,7 +61,7 @@ export VISUAL='nvim'
 
 # >>> nvim initialize >>>
 function nvims() {
-    items=("default" "nvchad" "astheo" "lazy" "astro")
+    items=("default" "nvchad" "theaveasso")
     config=$(printf "%s\n" "${items[@]}" | fzf --prompt=" Neovim Config  " --height=~50% --layout=reverse --border --exit-0)
     if [[ -z $config ]]; then
         echo "Nothing selected"
@@ -91,4 +91,8 @@ export PATH=$PATH:$GO_DIR/bin
 # >>> asdf
 . /opt/homebrew/opt/asdf/libexec/asdf.sh
 
-[ -f "/Users/theaveasso/.ghcup/env" ] && source "/Users/theaveasso/.ghcup/env" # ghcup-env
+# >>> bin
+export PATH="/Users/theaveasso/.local/bin:$PATH"
+
+# >>> haskell
+source ~/.ghcup/env
