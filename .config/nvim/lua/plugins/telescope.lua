@@ -6,12 +6,18 @@ return {
       local builtin = require("telescope.builtin")
       local keymap = vim.keymap.set
 
-      -- find
       keymap("n", "<C-p>", builtin.find_files, {})
       keymap("n", "<leader>fw", builtin.live_grep, {})
 
-      -- git
-
+      require("telescope").setup({
+        defaults={
+          mappings={
+            i={
+              ["<esc>"] = require("telescope.actions").close
+            }
+          }
+        }
+      })
     end
   },
   {

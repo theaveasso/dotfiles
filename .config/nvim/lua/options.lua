@@ -1,9 +1,23 @@
-vim.cmd("set expandtab")
-vim.cmd("set tabstop=2")
-vim.cmd("set softtabstop=2")
-vim.cmd("set shiftwidth=2")
+local opt = vim.opt
 
-vim.cmd("set number")
-vim.cmd("set relativenumber")
+opt.tabstop = 2
+opt.shiftwidth = 2
+opt.expandtab = true
+opt.autoindent = true
 
-vim.cmd("set clipboard+=unnamedplus")
+opt.wrap = false
+
+opt.cursorline = true
+
+opt.termguicolors = true
+opt.background = "dark"
+opt.signcolumn = "yes"
+
+opt.clipboard:append("unnamedplus")
+
+opt.backspace = "indent,eol,start"
+
+opt.swapfile = false
+
+opt.relativenumber = true
+opt.number = true
