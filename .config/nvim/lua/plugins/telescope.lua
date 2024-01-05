@@ -13,7 +13,7 @@ return {
           mappings = {
             i = {
               ["<esc>"] = actions.close,
-              ["<C-q>"] = actions.sent_selected_to_qflist + actions.open_qflist,
+              ["<C-q>"] = actions.send_selected_to_qflist + actions.open_qflist,
             },
           },
         },
