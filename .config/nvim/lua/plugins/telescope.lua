@@ -1,37 +1,41 @@
 return {
-  { "nvim-telescope/telescope.nvim", tag="0.1.5",
-    dependencies=
-    { "nvim-lua/plenary.nvim" },
-    config=function()
+  {
+    "nvim-telescope/telescope.nvim",
+    tag = "0.1.5",
+    dependencies = { "nvim-lua/plenary.nvim" },
+    config = function()
       local builtin = require("telescope.builtin")
-      local keymap = vim.keymap.set
-
-      keymap("n", "<C-p>", builtin.find_files, {})
-      keymap("n", "<leader>fw", builtin.live_grep, {})
+      local actions = require("telescope.actions")
 
       require("telescope").setup({
-        defaults={
-          mappings={
-            i={
-              ["<esc>"] = require("telescope.actions").close
-            }
-          }
-        }
+        defaults = {
+          path_display = { "smart" },
+          mappings = {
+            i = {
+              ["<esc>"] = actions.close,
+              ["<C-q>"] = actions.sent_selected_to_qflist + actions.open_qflist,
+            },
+          },
+        },
       })
-    end
+
+      local Map = require("utils").map
+
+      Map("n", "<C-p>", builtin.find_files, {})
+      Map("n", "<leader>fw", builtin.live_grep, {})
+    end,
   },
   {
     "nvim-telescope/telescope-ui-select.nvim",
-    config=function()
+    config = function()
       require("telescope").setup({
-        extensions={
-          ["ui-select"]={
-            require("telescope.themes").get_dropdown {}
-          }
+        extensions = {
+          ["ui-select"] = {
+            require("telescope.themes").get_dropdown({}),
+          },
         },
-        require("telescope").load_extension("ui-select")
+        require("telescope").load_extension("ui-select"),
       })
-    end
-
-  }
+    end,
+  },
 }

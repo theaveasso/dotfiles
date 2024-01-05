@@ -21,3 +21,14 @@ opt.swapfile = false
 
 opt.relativenumber = true
 opt.number = true
+
+opt.scrolloff = 8
+opt.signcolumn = "yes"
+opt.isfname:append("@-@")
+opt.updatetime = 50
+
+opt.showtabline = 0
+
+opt.hlsearch = true
+opt.incsearch = true
+opt.ignorecase = true
