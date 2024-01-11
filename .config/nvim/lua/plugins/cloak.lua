@@ -5,7 +5,7 @@ return  {
       enable = true,
       cloak_character = "*",
       pattern = {
-        file_patterns = ".env*",
+        file_patterns = "*.env*",
         cloak_pattern =  "=.+",
         replace = nil
       }

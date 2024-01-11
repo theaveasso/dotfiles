@@ -1,5 +1,6 @@
 local wezterm = require("wezterm")
 local actions = wezterm.action
+local mux = wezterm.mux
 
 local b = require("utils/background")
 local w = require("utils/wallpaper")
@@ -32,6 +33,23 @@ local config = {
   },
 
   keys = {
+    --- open config
+    k.key_table(
+      "CMD",
+      ",",
+      actions.SpawnCommandInNewTab({
+        cwd = os.getenv("WEZTERM_CONFIG_DIR"),
+        set_environment_variables = {
+          TERM = "screen-256color",
+        },
+        args = {
+          "/opt/homebrew/bin/nvim",
+          os.getenv("WEZTERM_CONFIG_FILE"),
+        },
+      })
+    ),
+
+    --- pane
     -- split
     k.key_table("CTRL", "\\", actions.SplitHorizontal({ domain = "CurrentPaneDomain" })),
     k.key_table("CTRL", "-", actions.SplitVertical({ domain = "CurrentPaneDomain" })),
@@ -42,6 +60,7 @@ local config = {
     k.key_table("CMD|CTRL", "k", actions.ActivatePaneDirection("Up")),
     k.key_table("CMD|CTRL", "j", actions.ActivatePaneDirection("Down")),
     -- resize
+    k.key_table("CMD|SHIFT", "f", actions.ToggleFullScreen),
     k.key_table("CMD|SHIFT", "h", actions.AdjustPaneSize({ "Left", 5 })),
     k.key_table("CMD|SHIFT", "l", actions.AdjustPaneSize({ "Right", 5 })),
     k.key_table("CMD|SHIFT", "k", actions.AdjustPaneSize({ "Up", 5 })),
@@ -55,6 +74,25 @@ local config = {
         k.multiple_actions(":w"),
       })
     ),
+
+    --- tab 
+    k.key_table("ALT|SHIFT", "t", actions.SpawnTab("CurrentPaneDomain")),
+    k.key_table("CMD|SHIFT", "t", actions.ShowTabNavigator),
+    k.key_table(
+      "CMD|SHIFT",
+      "R",
+      actions.PromptInputLine({
+        description = "Enter new name for tab",
+        action = wezterm.action_callback(function(window, _, line)
+          if line then
+            window:active_tab():set_title(line)
+          end
+        end),
+      })
+    ),
+
+    -- Natural text editing
+    k.key_table("CMD", "Backspace", actions.SendKey({ mods = "CTRL", key = "u" })),
   },
 
   enable_tab_bar = false,
@@ -67,32 +105,13 @@ local config = {
 
   enable_kitty_keyboard = true,
   enable_csi_u_key_encoding = false,
+
+  debug_key_events = true,
 }
 
-wezterm.on("user-var-changed", function(window, pane, name, value)
-  local overrides = window:get_config_overrides() or {}
-  if name == "ZEN_MODE" then
-    local incremental = value:find("+")
-    local number_value = tonumber(value)
-
-    if incremental ~= nil then
-      while number_value > 0 do
-        window:perform_action(wezterm.action.IncreaseFontSize, pane)
-        number_value = number_value - 1
-      end
-
-      overrides.background = {
-        b.get_background(0.9),
-      }
-    elseif number_value < 0 then
-      window:perform_action(wezterm.action.ResetFontSize, pane)
-      overrides.font_size = nil
-    else
-      overrides.background = nil
-      overrides.font_size = number_value
-    end
-  end
-  window:set_config_overrides(overrides)
+wezterm.on("gui-startup", function(cmd)
+  local _, _, window = mux.spawn_window(cmd or {})
+  window:gui_window():maximize()
 end)
 
 return config
