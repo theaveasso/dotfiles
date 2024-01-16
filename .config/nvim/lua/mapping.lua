@@ -12,7 +12,7 @@ local mappings = {
 		-- pane
 		["|"] = { "<cmd>vsplit<CR>", silent = true, desc = "Vertical split" },
 		["-"] = { "<cmd>split<CR>", silent = true, desc = "Horizontal split" },
-		["<leader>se"] = { "<C-w>=", silent = true, desc = "Equalize windows" },
+		["<leader>se"] = { "<C-w>", silent = true, desc = "Equalize windows" },
 		["<C-q>"] = { "<cmd>close<CR>", silent = true, desc = "Close window" },
 
 		["<C-h>"] = { "<C-w>h", silent = true, desc = "Window left" },
@@ -29,6 +29,10 @@ local mappings = {
 		["<C-u>"] = { "<C-u>zz", silent = false, desc = "Move text up" },
 		["n"] = { "nzzzv", silent = false, desc = "Next search result" },
 		["N"] = { "Nzzzv", silent = false, desc = "Previous search result" },
+
+    ["<Tab>"] = {"<cmd>bn<CR>", desc = "Next buffer"},
+    ["<S-Tab>"] = {"<cmd>bp<CR>", desc = "Previous buffer"},
+    ["<Esc>"] = {"<cmd>nohlsearch<CR>", desc = "Clear search highlight"},
 	},
 	i = {
 		["jj"] = { "<Esc>", silent = false, desc = "Insert mode - Escape" },

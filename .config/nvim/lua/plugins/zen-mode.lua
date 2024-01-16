@@ -1,4 +1,5 @@
 return {
+  { "folke/twilight.nvim", config = true },
   {
     "folke/zen-mode.nvim",
     config = function()
@@ -24,6 +25,4 @@ return {
       Map("n", "<leader>zz", "<cmd>ZenMode<CR>", { desc = "Zen Mode" })
     end,
   },
-  { "folke/twilight.nvim", config = true },
-  -- { "folke/whitespace.nvim", config = true },
 }

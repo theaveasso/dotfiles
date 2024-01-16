@@ -12,7 +12,7 @@ return {
           path_display = { "smart" },
           mappings = {
             i = {
-              ["<esc>"] = actions.close,
+              ["<Esc>"] = actions.close,
               ["<C-q>"] = actions.send_selected_to_qflist + actions.open_qflist,
             },
           },

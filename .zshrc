@@ -125,10 +125,15 @@ eval "$(zoxide init zsh)"
 
 # starship
 # eval "$(starship init zsh)"
-#
 export ANDROID_HOME=~/Library/Android/sdk
 export ANDROID_SDK_ROOT=~/Library/Android/sdk
 export ANDROID_AVD_HOME=~/.android/avd
 
 alias re="$ANDROID_SDK_ROOT/emulator/emulator"
 alias adb="$ANDROID_SDK_ROOT/platform-tools/adb"
+
+# llvm
+export PATH="/opt/homebrew/opt/llvm/bin:$PATH"
+export LDFLAGS="-L/opt/homebrew/opt/llvm/lib"
+export CPPFLAGS="-I/opt/homebrew/opt/llvm/include"
+export AR=/opt/homebrew/opt/llvm/bin/llvm-ar 

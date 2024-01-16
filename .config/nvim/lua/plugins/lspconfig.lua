@@ -44,7 +44,6 @@ return {
         Map("n", "gr", vim.lsp.buf.references, Merge(opts,{ desc = "Show references" }))
         Map("n", "<leader>rn", vim.lsp.buf.rename, Merge(opts,{ desc = "Rename symbol" }))
         Map({ "n", "v" }, "<leader>ca", vim.lsp.buf.code_action, Merge(opts,{ desc = "Code actions" }))
-
         Map("n", "<leader>e", vim.diagnostic.open_float, Merge(opts,{ desc = "Open diagnostic float window" }))
         Map("n", "[d", vim.diagnostic.goto_prev, Merge(opts,{ desc = "Go to previous diagnostic" }))
         Map("n", "]d", vim.diagnostic.goto_next, Merge(opts,{ desc = "Go to next diagnostic" }))
@@ -63,6 +62,14 @@ return {
         cmd = { "elixir-ls" },
         capabilities = capabilities,
         on_attach = on_attach,
+        settings = {
+          elixirLS = {
+            dialyzerEnabled =  true,
+            fetchDeps = false,
+            enableTestLenses = false,
+            suggestSpecs = false
+          }
+        }
       })
     end,
   },
