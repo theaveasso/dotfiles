@@ -9,8 +9,8 @@ local k = require("utils/keys")
 
 local config = {
   background = {
-    w.get_wallpaper("/.dotfiles/wallpapers/*"),
-    b.get_background(0.75),
+    -- w.get_wallpaper("/.dotfiles/wallpapers/*"),
+    b.get_background(0.95),
   },
 
   font_size = 14,

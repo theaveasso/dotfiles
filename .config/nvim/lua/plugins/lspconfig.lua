@@ -63,6 +63,7 @@ return {
 				"tsserver",
 				"tflint",
 				"terraformls",
+        "taplo"
 			}
 			for _, lsp in ipairs(clients) do
 				lspconfig[lsp].setup({
