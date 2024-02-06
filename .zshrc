@@ -79,6 +79,7 @@ export NVM_DIR="$HOME/.nvm"
 # <<< nvm initialize <<<
 
 # >>> go
+export GO111MODULE=auto
 export GO_DIR="$HOME/go"
 export PATH=$PATH:$GO_DIR/bin
 
