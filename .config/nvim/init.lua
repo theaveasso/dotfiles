@@ -12,6 +12,12 @@ end
 
 vim.opt.rtp:prepend(lazypath)
 
+vim.filetype.add({
+  extension = {
+    templ = "templ"
+  }
+})
+
 require("options")
 require("mapping")
 require("lazy").setup("plugins")

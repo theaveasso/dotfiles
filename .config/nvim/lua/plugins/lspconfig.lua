@@ -10,11 +10,16 @@ return {
 		config = function()
 			require("mason-lspconfig").setup({
 				ensure_installed = {
+          "gopls",
+					"docker_compose_language_service",
+					"yamlls",
+					"rust_analyzer",
 					"lua_ls",
 					"tsserver",
 					"tflint",
 					"terraformls",
-					"elixirls",
+					"taplo",
+					"htmx",
 				},
 			})
 		end,
@@ -29,6 +34,7 @@ return {
 		config = function()
 			local capabilities = require("cmp_nvim_lsp").default_capabilities()
 			local lspconfig = require("lspconfig")
+      local util = lspconfig.util
 
 			local Map = require("utils").map
 			local Merge = require("utils").merge
@@ -55,6 +61,7 @@ return {
 				)
 			end
 
+
 			local clients = {
 				"docker_compose_language_service",
 				"yamlls",
@@ -63,7 +70,8 @@ return {
 				"tsserver",
 				"tflint",
 				"terraformls",
-        "taplo"
+				"taplo",
+				"htmx",
 			}
 			for _, lsp in ipairs(clients) do
 				lspconfig[lsp].setup({
@@ -90,10 +98,27 @@ return {
 				capabilities = capabilities,
 				on_attach = on_attach,
 				cmd = { "docker-compose-langserver", "--stdio" },
-        filetypes = { "yaml.docker-compose" },
-        root_dir = lspconfig.util.root_pattern("docker-compose.yaml"),
-        single_file_support = true
+				filetypes = { "yaml.docker-compose" },
+				root_dir = util.root_pattern("docker-compose.yaml"),
+				single_file_support = true,
 			})
+
+      lspconfig.gopls.setup({
+        capabilities = capabilities,
+        on_attach = on_attach,
+        cmd = { "gopls" },
+        filetypes = { "go", "gomod", "gowork", "gotmpl" },
+        root_dir = util.root_pattern("go.work", "go.mod", ".git"),
+        single_file_support = true,
+      })
+
+      lspconfig.templ.setup({
+        capabilities = capabilities,
+        on_attach = on_attach,
+        cmd = { "templ", "lsp" },
+        filetypes = { "templ" },
+        root_dir = util.root_pattern("go.work", "go.mod", ".git"),
+      })
 		end,
 	},
 }

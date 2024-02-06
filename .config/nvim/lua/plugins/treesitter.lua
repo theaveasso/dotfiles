@@ -8,7 +8,15 @@ return {
         sync_install=false,
         highlight={enable=true},
         indent={enable=true},
+        additional_vim_regex_highlighting = false
       })
+
+      vim.cmd([[
+        augroup TemplFileType
+          autocmd!
+          autocmd BufRead, BufNewFile *.tmpl setfiletype templ
+        augroup END
+      ]])
     end
   }
 
