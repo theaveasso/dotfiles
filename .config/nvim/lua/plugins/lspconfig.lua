@@ -43,6 +43,7 @@ return {
 			local on_attach = function(_, bufnr)
 				opts.buffer = bufnr
 
+                Map("n", "<leader>lr", "<cmd>LspRestart<CR>", Merge(opts, { desc = "Restart LSP server" }))
 				Map("n", "K", vim.lsp.buf.hover, Merge(opts, { desc = "Show hover information" }))
 				Map("n", "gi", vim.lsp.buf.implementation, Merge(opts, { desc = "Go to implementation" }))
 				Map("n", "gd", vim.lsp.buf.definition, Merge(opts, { desc = "Go to definition" }))
@@ -67,8 +68,10 @@ return {
 				"yamlls",
 				"rust_analyzer",
 				"lua_ls",
+                "sqls",
 				"tsserver",
 				"tflint",
+                "sqlls",
 				"terraformls",
 				"taplo",
 				"htmx",
