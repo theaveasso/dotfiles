@@ -15,4 +15,10 @@ return {
 		event = "InsertEnter",
 		opts = true,
 	},
+    --  gleam
+    {
+        "gleam-lang/gleam.vim",
+        config = function ()
+        end
+    }
 }

@@ -32,3 +32,5 @@ opt.showtabline = 0
 opt.hlsearch = true
 opt.incsearch = true
 opt.ignorecase = true
+
+opt.conceallevel = 1

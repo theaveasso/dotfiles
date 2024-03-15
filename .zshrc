@@ -144,3 +144,6 @@ export AR=/opt/homebrew/opt/llvm/bin/llvm-ar
 
 # avm
 export PATH="~/.avm/bin:$PATH"
+
+# rebar
+export PATH="~/.cache/rebar3/bin:$PATH"
