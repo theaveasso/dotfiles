@@ -3,7 +3,7 @@ local actions = wezterm.action
 local mux = wezterm.mux
 
 local b = require("utils/background")
-local w = require("utils/wallpaper")
+-- local w = require("utils/wallpaper")
 local f = require("utils/font")
 local k = require("utils/keys")
 
@@ -49,7 +49,6 @@ local config = {
       })
     ),
 
-    --- pane
     -- split
     k.key_table("CTRL", "\\", actions.SplitHorizontal({ domain = "CurrentPaneDomain" })),
     k.key_table("CTRL", "-", actions.SplitVertical({ domain = "CurrentPaneDomain" })),
@@ -74,7 +73,6 @@ local config = {
         k.multiple_actions(":w"),
       })
     ),
-
     --- tab 
     k.key_table("ALT|SHIFT", "t", actions.SpawnTab("CurrentPaneDomain")),
     k.key_table("CMD|SHIFT", "t", actions.ShowTabNavigator),

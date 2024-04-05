@@ -36,6 +36,9 @@ local mappings = {
         ["<Tab>"] = { "<cmd>bn<CR>", desc = "Next buffer" },
         ["<S-Tab>"] = { "<cmd>bp<CR>", desc = "Previous buffer" },
         ["<Esc>"] = { "<cmd>nohlsearch<CR>", desc = "Clear search highlight" },
+
+        ["<C-;>"] = { "<cmd>vertical resize +5<CR>", desc = "Increase window width" },
+        ["<C-'>"] = { "<cmd>vertical resize -5<CR>", desc = "Decrease window width" },
     },
     i = {
         ["jj"] = { "<Esc>", silent = false, desc = "Insert mode - Escape" },
