@@ -8,10 +8,7 @@ return {
         Map("n", "<leader>ss", "<cmd>Silicon<CR>", { desc = "Silicon" })
         require("silicon").setup({
             font = "JetBrainsMono Nerd Font",
-            line_number = true,
-            watermark = {
-                text = ' @theaveasso',
-            },
+            line_number = true
         })
     end
 }

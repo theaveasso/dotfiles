@@ -14,6 +14,9 @@ return {
                 sort = {
                     sorter = "case_sensitive",
                 },
+                git = {
+                    ignore = false,
+                },
                 diagnostics = {
                     enable = false,
                     icons = {
