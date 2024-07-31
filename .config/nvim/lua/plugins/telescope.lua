@@ -13,7 +13,7 @@ return {
 
             require("telescope").setup({
                 defaults = {
-                    path_display = { "smart" },
+                    path_display = { "truncate" },
                     mappings = {
                         i = {
                             ["<Esc>"] = actions.close,

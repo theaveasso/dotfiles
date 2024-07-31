@@ -9,6 +9,7 @@ return {
                 null.builtins.formatting.gofumpt,
                 null.builtins.formatting.golines,
                 null.builtins.formatting.goimports_reviser,
+                null.builtins.formatting.clang_format,
                 -- null.builtins.diagnostics.eslint_d,
             },
         })

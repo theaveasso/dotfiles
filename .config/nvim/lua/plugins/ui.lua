@@ -1,7 +1,6 @@
 return {
   {
     "catppuccin/nvim",
-    lazy = false,
     name = "catppuccin",
     priority = 1000,
     config = function()
@@ -10,12 +9,38 @@ return {
   },
   {
     "folke/noice.nvim",
-    event = "VeryLazy",
-    opts = {
-    },
+    config = true,
     dependencies = {
       "MunifTanjim/nui.nvim",
-      "rcarriga/nvim-notify",
     }
+  },
+  {
+    "folke/twilight.nvim",
+    config = true
+  },
+  {
+    "folke/zen-mode.nvim",
+    config = function()
+      require("zen-mode").setup({
+        window = {
+          width = 120,
+          height = 1,
+          backdrop = 0.95,
+          options = {
+            number = false,
+          },
+        },
+        plugins = {
+          wezterm = {
+            enabled = true,
+            font = "+2",
+          },
+        },
+      })
+
+      local Map = require("utils").map
+
+      Map("n", "<leader>zz", "<cmd>ZenMode<CR>", { desc = "Zen Mode" })
+    end,
   },
 }

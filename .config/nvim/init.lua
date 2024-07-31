@@ -17,7 +17,6 @@ vim.filetype.add({
     templ = "templ"
   }
 })
-
 require("options")
 require("mapping")
 require("lazy").setup("plugins")

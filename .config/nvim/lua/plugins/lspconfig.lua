@@ -1,5 +1,11 @@
 return {
   {
+    "gleam-lang/gleam.vim",
+    ft = { "gleam" },
+    config = function()
+    end,
+  },
+  {
     "williamboman/mason.nvim",
     config = function()
       require("mason").setup({})
@@ -76,8 +82,9 @@ return {
         "terraformls",
         "taplo",
         "htmx",
-        "gleam",
-        "zls"
+        -- "gleam",
+        "zls",
+        "bashls",
       }
       for _, lsp in ipairs(clients) do
         lspconfig[lsp].setup({
@@ -132,6 +139,23 @@ return {
         cmd = { "gleam", "lsp" },
         filetypes = { "gleam" },
         root_dir = util.root_pattern("gleam.toml", ".git"),
+      })
+
+      lspconfig.clangd.setup({
+        capabilities = capabilities,
+        on_attach = on_attach,
+        cmd = { "clangd" },
+        filetypes = { "c", "cpp", "objc", "objcpp", "cuda", "proto" },
+        root_dir = util.root_pattern(
+          ".clangd",
+          ".clang-tidy",
+          ".clang-format",
+          "compile_commands.json",
+          "compile_flags.txt",
+          "configure.ac",
+          ".git"
+        ),
+        single_file_support = true,
       })
     end,
   },

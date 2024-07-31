@@ -34,3 +34,8 @@ opt.incsearch = true
 opt.ignorecase = true
 
 opt.conceallevel = 1
+
+opt.foldcolumn = '1'
+opt.foldlevel = 99
+opt.foldlevelstart = 99
+opt.foldenable = true
