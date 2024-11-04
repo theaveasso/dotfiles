@@ -8,18 +8,18 @@ local f = require("utils/font")
 local k = require("utils/keys")
 
 local config = {
-  disable_default_key_bindings = true,
+  -- disable_default_key_bindings = true,
   -- background = {
   --   -- w.get_wallpaper("/.dotfiles/wallpapers/*"),
   --   b.get_background(0.8),
   -- },
 
-  color_scheme = "Catppuccin Mocha (Gogh)",
+  color_scheme = "Everforest Dark (Gogh)",
 
   font_size = 14,
   line_height = 1.2,
   font = f.get_font({
-    "JetBrainsMono Nerd Font",
+    "Monaspace Radon",
   }),
 
   window_padding = {

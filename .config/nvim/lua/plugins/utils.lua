@@ -1,5 +1,6 @@
 return {
-  {
+  { -- "ThePrimeagen/harpoon",
+
     "ThePrimeagen/harpoon",
     branch = "harpoon2",
     dependencies = { "nvim-lua/plenary.nvim" },
@@ -52,8 +53,14 @@ return {
   {
     "mg979/vim-visual-multi",
     config = function()
-
-
     end
+  },
+  { -- "folke/which-key.nvim",
+    "folke/which-key.nvim",
+    event = "VeryLazy",
+    config = function()
+      local wk = require("which-key")
+      wk.setup({})
+    end,
   }
 }

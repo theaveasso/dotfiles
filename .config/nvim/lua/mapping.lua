@@ -1,8 +1,10 @@
 vim.g.mapleader = " "
 local keymap = vim.keymap.set
 
+
 local mappings = {
   n = {
+    ["<leader>term"] = { ":!", noremap = true, silent = true, desc = "Run current file" },
     ["<leader>rr"] = { ":!!<CR>", noremap = true, silent = true, desc = "Run current file" },
     ["<leader>tg"] = { ":!go leader -v ./...<CR>", noremap = true, silent = true, desc = "Run go leader" },
 
@@ -22,9 +24,6 @@ local mappings = {
     ["<C-j>"] = { "<C-w>j", silent = true, desc = "Window down" },
     ["<C-k>"] = { "<C-w>k", silent = true, desc = "Window up" },
     ["<C-l>"] = { "<C-w>l", silent = true, desc = "Window right" },
-
-    ["<leader>tk"] = { "<C-w>t<C-w>K", desc = "Change vertical to horizontal" },
-    ["<leader>th"] = { "<C-w>t<C-w>H", desc = "Change horizontal to vertical" },
 
     -- detail
     ["J"] = { "mzJ`z", silent = false, desc = "Move text down" },

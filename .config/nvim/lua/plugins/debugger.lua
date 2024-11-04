@@ -1,35 +1,215 @@
-return {
-    {
-        "mfussenegger/nvim-dap",
-        config = function()
-            local Map   = require("utils").map
-
-            Map("n", "<leader>db", "<cmd>DapToggleBreakpoint<CR>", { desc = "Add breakpoint at line" })
-            Map("n", "<leader>dus", function()
-                local widgets = require("dap.ui.widgets")
-                local sidebar = widgets.sidebar(widgets.scopes)
-                sidebar.open()
-            end, { desc = "Open debugging sidebar" })
-        end
-    },
-    {
-        "leoluz/nvim-dap-go",
-        ft = "go",
-        dependencies = {
-            "mfussenegger/nvim-dap",
-        },
-        config = function()
-            local dapgo = require("dap-go").setup()
-
-            local Map   = require("utils").map
-
-            Map("n", "<leader>dgt", function ()
-                dapgo.debug_test()
-            end, { desc = "Debug go test" })
-            Map("n", "<leader>dgl", function()
-                dapgo.debug_last()
-            end, { desc = "Open debugging sidebar" })
-        end
-
-    }
-}
+-- local jstsconfig = {
+--   {
+--     type = 'node2',
+--     name = 'Launch',
+--     request = 'launch',
+--     program = '${file}',
+--     cwd = vim.fn.getcwd(),
+--     sourceMaps = true,
+--     protocol = 'inspector',
+--     console = 'integratedTerminal',
+--   },
+--   {
+--     type = 'node2',
+--     name = 'Attach',
+--     request = 'attach',
+--     program = '${file}',
+--     cwd = vim.fn.getcwd(),
+--     sourceMaps = true,
+--     protocol = 'inspector',
+--     console = 'integratedTerminal',
+--   },
+--   {
+--     name = "Vitest Debug",
+--     type = "pwa-node",
+--     request = "launch",
+--     cwd = vim.fn.getcwd(),
+--     program = "${workspaceFolder}/node_modules/vitest/vitest.mjs",
+--     args = { "run", "${file}" },
+--     autoAttachChildProcesses = true,
+--     smartStep = true,
+--     console = "integratedTerminal",
+--     skipFiles = { "<node_internals>/**", "node_modules/**" },
+--   },
+-- }
+--
+-- local goconfig = {
+--   {
+--     type = "go",
+--     name = "Debug",
+--     request = "launch",
+--     program = "${file}",
+--   },
+--   -- {
+--   --   type = "go",
+--   --   name = "Debug (Arguments)",
+--   --   request = "launch",
+--   --   program = "${file}",
+--   --   args = get_go_args,
+--   -- },
+--   {
+--     type = "go",
+--     name = "Debug Test (main)",
+--     request = "launch",
+--     mode = "test",
+--     program = "${file}",
+--   },
+--   {
+--     type = "go",
+--     name = "Debug Test (package)",
+--     request = "launch",
+--     mode = "test",
+--     program = "./${relativeFileDirname}",
+--   },
+--   -- Build the binary (go build -gcflags=all="-N -l") and run it + pick it
+--   {
+--     type = "go",
+--     name = "Attach To PID",
+--     mode = "local",
+--     request = "attach",
+--     processId = require('plugins.dap.utils').pick_process,
+--   },
+--   {
+--     type = "go",
+--     name = "Attach To Port (:9080)",
+--     mode = "remote",
+--     request = "attach",
+--     port = "9080"
+--   },
+-- }
+--
+-- return {
+--   {
+--     "mfussenegger/nvim-dap",
+--     dependencies = {
+--       "leoluz/nvim-dap-go",
+--       "rcarriga/nvim-dap-ui",
+--       "nvim-neotest/nvim-nio",
+--       "williamboman/mason.nvim",
+--       "jay-babu/mason-nvim-dap.nvim",
+--       "theHamsta/nvim-dap-virtual-text",
+--     },
+--     config = function()
+--       local dap = require("dap")
+--       local ui = require("dapui")
+--       local mason = require("mason")
+--       local masondap = require("mason-nvim-dap")
+--
+--       -- ╭──────────────────────────────────────────────────────────╮
+--       -- │ Debuggers                                                │
+--       -- ╰──────────────────────────────────────────────────────────╯
+--       mason.setup()
+--       masondap.setup()
+--
+--       -- ╭──────────────────────────────────────────────────────────╮
+--       -- │ Adapters                                                 │
+--       -- ╰──────────────────────────────────────────────────────────╯
+--       dap.adapters.node2 = {
+--         type = "executable",
+--         command = "node",
+--         args = { vim.fn.stdpath("data") .. "/mason/packages/node-debug2-adapter/out/src/nodeDebug.js" },
+--       }
+--       dap.adapters["pwa-node"] = {
+--         type = "server",
+--         host = "localhost",
+--         port = "${port}",
+--         executable = {
+--           command = vim.fn.stdpath("data") .. "/mason/bin/js-debug-adapter", -- Path to VSCode Debugger
+--           args = { "${port}" },
+--         }
+--       }
+--       dap.adapters.go = {
+--         type = "server",
+--         port = "${port}",
+--         executable = {
+--           command = { vim.fn.stdpath("data") .. "/mason/bin/dlv" },
+--           args = { "dap", "-l", "127.0.0.1:${port}" },
+--         },
+--       }
+--
+--       -- ╭──────────────────────────────────────────────────────────╮
+--       -- │ Configuration                                            │
+--       -- ╰──────────────────────────────────────────────────────────╯
+--       dap.configurations = {
+--         javascript = jstsconfig,
+--         typescript = jstsconfig,
+--         go = goconfig,
+--       }
+--
+--
+--       -- configurations
+--       dap.configurations = {
+--         javascript = {
+--           {
+--             type = 'node2',
+--             request = 'launch',
+--             name = 'Launch file',
+--             program = "${file}",
+--             cwd = vim.fn.getcwd(),
+--             sourceMaps = true,
+--             protocol = 'inspector',
+--             console = 'integratedTerminal',
+--           },
+--           {
+--             type = 'node2',
+--             name = 'Attach',
+--             request = 'attach',
+--             program = '${file}',
+--             cwd = vim.fn.getcwd(),
+--             sourceMaps = true,
+--             protocol = 'inspector',
+--             console = 'integratedTerminal',
+--           },
+--         }
+--       }
+--
+--       require("dapui").setup()
+--       require("dap-go").setup()
+--       require("nvim-dap-virtual-text").setup({
+--         display_callback = function(variable)
+--           local name = string.lower(variable.name)
+--           local value = string.lower(variable.value)
+--           if name:match "secret" or name:match "api" or value:match "secret" or value:match "api" then
+--             return "********"
+--           end
+--           if #variable.value > 15 then
+--             return " " .. string.sub(variable.value, 1, 15) .. " ... "
+--           end
+--           return " " .. variable.value
+--         end,
+--       })
+--
+--       local Map = require("utils").map
+--       Map("n", "<leader>db", "<cmd>DapToggleBreakpoint<CR>", { desc = "Add breakpoint at line" })
+--       Map("n", "<leader>dc", "<cmd>DapContinue<CR>", { desc = "Continue" })
+--       Map("n", "<leader>di", "<cmd>DapStepInto<CR>", { desc = "Step into" })
+--       Map("n", "<leader>do", "<cmd>DapStepOver<CR>", { desc = "Step over" })
+--       Map("n", "<leader>dO", "<cmd>DapStepOut<CR>", { desc = "Step out" })
+--       Map("n", "<leader>dr", "<cmd>DapTerminate<CR>", { desc = "Terminate" })
+--       Map("n", "<leader>?", function()
+--         require("dapui").eval(nil, { enter = true }) -- eval expression under cursor
+--       end)
+--       Map("n", "<leader>dus", function()
+--         local widgets = require("dap.ui.widgets")
+--         local sidebar = widgets.sidebar(widgets.scopes)
+--         sidebar.open()
+--       end, { desc = "Open debugging sidebar" })
+--
+--       -- Open dapui on attach/launch
+--       dap.listeners.before.attach.dapui_config = function()
+--         ui.open()
+--       end
+--       dap.listeners.before.launch.dapui_config = function()
+--         ui.open()
+--       end
+--       -- Close dapui on exit
+--       dap.listeners.before.event_terminated.dapui_config = function()
+--         ui.close()
+--       end
+--       dap.listeners.before.event_exited.dapui_config = function()
+--         ui.close()
+--       end
+--     end
+--   },
+-- }
+return {}

@@ -8,7 +8,7 @@ return {
             local Map = require("utils").map
 
             -- Mapping
-            Map("n", "<C-n>", "<cmd>NvimTreeToggle<CR>", { desc = "NeoTree" })
+            Map("n", "<C-t>", "<cmd>NvimTreeToggle<CR>", { desc = "NeoTree" })
 
             require("nvim-tree").setup({
                 sort = {
@@ -34,6 +34,7 @@ return {
                 },
                 filters = {
                     dotfiles = false,
+                    custom = { "^.git$",  },
                 },
                 update_focused_file = {
                     enable = true,

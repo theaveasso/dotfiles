@@ -4,11 +4,6 @@ return {
     config = {}
   },
   {
-    "lukas-reineke/indent-blankline.nvim",
-    main = "ibl",
-    config = {}
-  },
-  {
     "kevinhwang91/nvim-ufo",
     dependencies = {
       "kevinhwang91/promise-async"

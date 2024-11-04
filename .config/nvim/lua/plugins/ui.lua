@@ -1,18 +1,19 @@
 return {
   {
-    "catppuccin/nvim",
-    name = "catppuccin",
+    "neanias/everforest-nvim",
+    name = "everforest",
     priority = 1000,
     config = function()
-      vim.cmd.colorscheme("catppuccin-mocha")
+      vim.cmd.colorscheme("everforest")
     end,
   },
   {
     "folke/noice.nvim",
-    config = true,
-    dependencies = {
-      "MunifTanjim/nui.nvim",
-    }
+    config = function()
+      local noice = require("noice")
+      noice.setup({
+      })
+    end
   },
   {
     "folke/twilight.nvim",

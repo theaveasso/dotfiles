@@ -6,6 +6,28 @@ return {
     end,
   },
   {
+    'akinsho/flutter-tools.nvim',
+    dependencies = {
+      'nvim-lua/plenary.nvim',
+      'stevearc/dressing.nvim',
+    },
+    config = function ()
+      require("flutter-tools").setup({
+        dev_log = {
+          enabled = false,
+          open_cmd = "tabedit",
+        },
+        lsp = {
+          on_attach = require("plugins.lspconfig").common_on_attach,
+          capabilities = require("plugins.lspconfig").default_capabilities,
+        }
+      })
+    end,
+  },
+ {
+    "dart-lang/dart-vim-plugin"
+  },
+  {
     "williamboman/mason.nvim",
     config = function()
       require("mason").setup({})
@@ -14,21 +36,7 @@ return {
   {
     "williamboman/mason-lspconfig.nvim",
     config = function()
-      require("mason-lspconfig").setup({
-        ensure_installed = {
-          "gopls",
-          "docker_compose_language_service",
-          "yamlls",
-          "rust_analyzer",
-          "lua_ls",
-          "tsserver",
-          "tflint",
-          "terraformls",
-          "taplo",
-          "zls"
-          -- "htmx",
-        },
-      })
+      require("mason-lspconfig").setup()
     end,
   },
   {
@@ -76,13 +84,12 @@ return {
         "rust_analyzer",
         "lua_ls",
         "sqls",
-        "tsserver",
+        "ts_ls",
         "tflint",
         "sqlls",
         "terraformls",
         "taplo",
-        "htmx",
-        -- "gleam",
+        "ols",
         "zls",
         "bashls",
       }
@@ -133,18 +140,9 @@ return {
         root_dir = util.root_pattern("go.work", "go.mod", ".git"),
       })
 
-      lspconfig.gleam.setup({
-        capabilities = capabilities,
-        on_attach = on_attach,
-        cmd = { "gleam", "lsp" },
-        filetypes = { "gleam" },
-        root_dir = util.root_pattern("gleam.toml", ".git"),
-      })
-
       lspconfig.clangd.setup({
         capabilities = capabilities,
         on_attach = on_attach,
-        cmd = { "clangd" },
         filetypes = { "c", "cpp", "objc", "objcpp", "cuda", "proto" },
         root_dir = util.root_pattern(
           ".clangd",
@@ -155,6 +153,7 @@ return {
           "configure.ac",
           ".git"
         ),
+        cmd = {"clangd", "--cmpile-commands=./"},
         single_file_support = true,
       })
     end,
